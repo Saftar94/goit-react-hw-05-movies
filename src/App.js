@@ -4,9 +4,17 @@ import { Switch, Route } from "react-router-dom";
 import Section from "./component/Section/Section";
 import Navigation from "./component/Navigation/Navigation";
 import { BallTriangle } from "react-loader-spinner";
-const HomePage = lazy(() => import("./views/HomePage"));
-const Movies = lazy(() => import("./views/MoviesPage"));
-const MovieDetauls = lazy(() => import("./views/MovieDetailsPage"));
+const HomePage = lazy(() =>
+  import("./views/HomePage" /* webpackChunkName: "home-page" */)
+);
+const MoviesPage = lazy(() =>
+  import("./views/MoviesPage" /* webpackChunkName: "movies-page" */)
+);
+const MovieDetauls = lazy(() =>
+  import(
+    "./views/MovieDetailsPage" /* webpackChunkName: "movie-details-page" */
+  )
+);
 const App = () => {
   return (
     <>
@@ -34,7 +42,7 @@ const App = () => {
           </Route>
           <Route exact path="/movies">
             <Section>
-              <Movies />
+              <MoviesPage />
             </Section>
           </Route>
           <Route path="/movies/:Id">

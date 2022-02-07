@@ -8,9 +8,9 @@ import { BallTriangle } from 'react-loader-spinner'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-export function Movies({ onSubmit }) {
+export function Movies() {
   const [movieName, setMovieName] = useState('')
-  const [submitMovieName, setSubmitMovieName] = useState('null')
+  const [submitMovieName, setSubmitMovieName] = useState(null)
   const [movies, setMovies] = useState(null)
   const [status, setStatus] = useState('idle')
   const [page, setPage] = useState(1)
@@ -39,7 +39,7 @@ export function Movies({ onSubmit }) {
         setStatus('resolved')
       })
       .catch((error) => {
-        return 'error'
+        return toast.error(error)
       })
   }, [page, submitMovieName])
 
@@ -51,6 +51,7 @@ export function Movies({ onSubmit }) {
     event.preventDefault()
 
     if (movieName.trim() === '') {
+      toast.warn('Input value!')
       return
     }
     setSubmitMovieName(movieName)
@@ -89,6 +90,7 @@ export function Movies({ onSubmit }) {
           style={{ overflow: 'hidden' }}
           loader={
             <BallTriangle
+              type="Puff"
               color="#00BFFF"
               height={80}
               width={80}

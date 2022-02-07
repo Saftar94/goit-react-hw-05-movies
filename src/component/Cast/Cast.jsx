@@ -10,7 +10,7 @@ const Cast = () => {
 
   useEffect(() => {
     renderParamMovie(cardParams.Id, 'credits').then((data) => setCredits(data))
-  }, [])
+  }, [cardParams])
   return (
     <>
       {credits && (

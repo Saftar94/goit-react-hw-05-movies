@@ -9,7 +9,7 @@ const Reviews = () => {
 
   useEffect(() => {
     renderParamMovie(cardParams.Id, 'reviews').then((data) => setReviews(data))
-  }, [])
+  }, [cardParams])
 
   return (
     <>
